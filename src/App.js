@@ -1,13 +1,24 @@
-import React from 'react';
-import RecipeItem from './components/RecipeItem';
-import './styles/App.css';
+import React, { useState } from 'react'
+import RecipeItem from './components/RecipeItem'
+import './styles/App.css'
+
+
 
 function App() {
+
+  const [recipes, setRecipe] = useState([
+    { id: 1, title: 'Chicken soup', body: 'Hearty soup for cold days' },
+    { id: 2, title: 'Pumpkin soup', body: 'Perfect for autumn chilly days' },
+    { id: 3, title: 'Lentil soup', body: 'Spicy and rich soup for cold days' },
+  ])
+
   return (
     <div className="App">
-      <RecipeItem recipe={{id: 1, title: 'Javascript', body: 'Description'}}/>
+      {recipes.map(recipe => 
+      <RecipeItem recipe={recipe} />
+      )}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
