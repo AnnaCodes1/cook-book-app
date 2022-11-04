@@ -10,5 +10,15 @@
 }
 
 .App {
-  width: 900px;
+  width: 70%;
+  max-width: 750px;
+}
+
+.recipe {
+  display: flex;
+  padding: 15px;
+  border: 2px solid teal;
+  margin-top: 15px;
+  justify-content: space-between;
+  align-items: center;
 }
