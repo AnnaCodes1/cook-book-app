@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import RecipeItem from './components/RecipeItem'
+import RecipeList from './components/RecipeList'
 import './styles/App.css'
 
 
@@ -14,9 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      {recipes.map(recipe => 
-      <RecipeItem recipe={recipe} />
-      )}
+    <RecipeList recipes={recipes}/>
     </div>
   )
 }
