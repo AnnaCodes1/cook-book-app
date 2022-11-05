@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import MyButton from './components/button/MyButton'
-import MyInput from './components/input/MyInput'
+import RecipeForm from './components/RecipeForm'
 import RecipeList from './components/RecipeList'
 import './styles/App.css'
 
@@ -11,35 +10,26 @@ function App() {
     { id: 3, title: 'Lentil soup', body: 'Spicy and rich soup for cold days' },
   ])
 
-  const [recipe, setRecipe] = useState({ title: '', body: '' })
+  const createRecipe = (newRecipe) => {
+    setRecipes([...recipes, newRecipe])
+  }
 
-  const addNewRecipe = (e) => {
-    e.preventDefault()
-
-    setRecipes([...recipes, { ...recipe, id: Date.now() }])
-    setRecipe({ title: '', body: '' })
+  const removeRecipe = (recipe) => {
+    setRecipes(recipes.filter((r) => r.id !== recipe.id))
   }
 
   return (
     <div className="App">
-      {/* {Управляемый компонент} */}
-      <MyInput
-        value={recipe.title}
-        onChange={(e) => setRecipe({ ...recipe, title: e.target.value })}
-        type="text"
-        placeholder="Title"
-      />
-
-      <MyInput
-        value={recipe.body}
-        onChange={(e) => setRecipe({ ...recipe, body: e.target.value })}
-        type="text"
-        placeholder="Description"
-      />
-
-      <MyButton onClick={addNewRecipe}>Add recipe</MyButton>
-
-      <RecipeList recipes={recipes} title="Рецепты супов" />
+      <RecipeForm create={createRecipe} />
+      {recipes.length ? (
+        <RecipeList
+          remove={removeRecipe}
+          recipes={recipes}
+          title="Рецепты супов"
+        />
+      ) : (
+        <h1 style={{ textAlign: 'center' }}>No soup recipes found!</h1>
+      )}
     </div>
   )
 }
