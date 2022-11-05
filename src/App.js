@@ -11,48 +11,28 @@ function App() {
     { id: 3, title: 'Lentil soup', body: 'Spicy and rich soup for cold days' },
   ])
 
-  const [recipes2, setRecipes2] = useState([
-    { id: 1, title: 'Plov with meat', body: 'Hearty soup for cold days' },
-    {
-      id: 2,
-      title: 'Plov with curaga',
-      body: 'Perfect for autumn chilly days',
-    },
-    {
-      id: 3,
-      title: 'Plov with mushrooms',
-      body: 'Spicy and rich soup for cold days',
-    },
-  ])
-
-  const [title, setTitle] = useState('')
-  const [body, setBody] = useState('')
+  const [recipe, setRecipe] = useState({ title: '', body: '' })
 
   const addNewRecipe = (e) => {
     e.preventDefault()
-    const newRecipe = {
-      id: Date.now(),
-      title,
-      body,
-    }
-    setRecipes([...recipes, newRecipe])
-    setTitle('')
-    setBody('')
+
+    setRecipes([...recipes, { ...recipe, id: Date.now() }])
+    setRecipe({ title: '', body: '' })
   }
 
   return (
     <div className="App">
       {/* {Управляемый компонент} */}
       <MyInput
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        value={recipe.title}
+        onChange={(e) => setRecipe({ ...recipe, title: e.target.value })}
         type="text"
         placeholder="Title"
       />
 
       <MyInput
-        value={body}
-        onChange={(e) => setBody(e.target.value)}
+        value={recipe.body}
+        onChange={(e) => setRecipe({ ...recipe, body: e.target.value })}
         type="text"
         placeholder="Description"
       />
@@ -60,7 +40,6 @@ function App() {
       <MyButton onClick={addNewRecipe}>Add recipe</MyButton>
 
       <RecipeList recipes={recipes} title="Рецепты супов" />
-      <RecipeList recipes={recipes2} title="Рецепты плова" />
     </div>
   )
 }
