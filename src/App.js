@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import RecipeForm from './components/RecipeForm'
 import RecipeList from './components/RecipeList'
+import MySelect from './components/UI/select/MySelect'
 import './styles/App.css'
 
 function App() {
@@ -18,9 +19,27 @@ function App() {
     setRecipes(recipes.filter((r) => r.id !== recipe.id))
   }
 
+
+  const sortRecipes = (sort) => {
+    setSelectedSort(sort);
+    setRecipes([...recipes].sort((a,b) => a[sort].localeCompare(b[sort])))
+  }
+  const [selectedSort, setSelectedSort] = useState('')
+
   return (
     <div className="App">
       <RecipeForm create={createRecipe} />
+      <hr style={{ margin: '15px 0' }} />
+      <MySelect
+        value={selectedSort}
+        onChange={sortRecipes}
+        defaultValue="Sort by"
+        options={[
+          { value: 'title', name: 'By title' },
+          { value: 'body', name: 'By content' },
+        ]}
+      />
+
       {recipes.length ? (
         <RecipeList
           remove={removeRecipe}
