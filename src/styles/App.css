@@ -14,11 +14,44 @@
   max-width: 750px;
 }
 
-.recipe {
+.recipe-item {
   display: flex;
   padding: 15px;
   border: 2px solid teal;
   margin-top: 15px;
   justify-content: space-between;
   align-items: center;
+}
+
+/* ------ Recipe Body Styles ----- */
+
+.recipe-body {
+padding-top: 40px
+}
+
+.each-recipe {
+  margin-top: 15px;
+padding: 20px;
+border: 2px solid teal;
+
+
+}
+
+
+.ingredients-items {
+  margin-top: 5px;
+  margin-right: 70px;
+  padding: 5px;
+ display: flex;
+ justify-content: space-between;
+
+}
+.recipe-header {
+  padding: 15px;
+  text-align: center;
+}
+.about-recipe {
+  font-weight: 700;
+  padding: 15px;
+  text-align: center;
 }
