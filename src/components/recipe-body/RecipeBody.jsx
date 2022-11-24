@@ -3,9 +3,9 @@ import IngredientList from './IngredientList'
 
 const RecipeBody = ({ recipeObject }) => {
   const eachRecipe = recipeObject.map((item) => {
-    const { title, about, recipe, ...ingredient } = item
+    const { id, title, about, recipe, ...ingredient } = item
     return (
-      <div className='each-recipe'>
+      <div className='each-recipe' key={id}>
         <h1 className='recipe-header'>{title}</h1>
         <p className='about-recipe'>{about}</p>
         <IngredientList {...ingredient} />

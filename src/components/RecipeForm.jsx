@@ -1,38 +1,34 @@
 import React, { useState } from 'react'
-import MyButton from './UI/button/MyButton';
+import MyButton from './UI/button/MyButton'
 import MyInput from './UI/input/MyInput'
 
-const RecipeForm = ({ create }) => {
+const RecipeForm = ({ onCreated }) => {
   const [recipe, setRecipe] = useState({ title: '', body: '' })
 
-  const addNewRecipe = (e) => {
+  const onSubmit = e => {
     e.preventDefault()
-    const newRecipe = {
-      ...recipe,
-      id: Date.now(),
-    }
-    create(newRecipe)
+    onCreated(recipe)
     setRecipe({ title: '', body: '' })
   }
 
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       {/* {Управляемый компонент} */}
       <MyInput
         value={recipe.title}
-        onChange={(e) => setRecipe({ ...recipe, title: e.target.value })}
-        type="text"
-        placeholder="Title"
+        onChange={e => setRecipe({ ...recipe, title: e.target.value })}
+        type='text'
+        placeholder='Title'
       />
 
       <MyInput
         value={recipe.body}
-        onChange={(e) => setRecipe({ ...recipe, body: e.target.value })}
-        type="text"
-        placeholder="Description"
+        onChange={e => setRecipe({ ...recipe, body: e.target.value })}
+        type='text'
+        placeholder='Description'
       />
 
-      <MyButton onClick={addNewRecipe}>Add recipe</MyButton>
+      <MyButton type='submit'>Add recipe</MyButton>
     </form>
   )
 }
