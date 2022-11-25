@@ -3,6 +3,7 @@ import RecipeBody from './components/recipe-body/RecipeBody'
 import RecipeForm from './components/RecipeForm'
 import RecipeList from './components/RecipeList'
 import MySelect from './components/UI/select/MySelect'
+import SearchPanel from './components/UI/search-panel/SearchPanel'
 import './styles/App.css'
 
 let maxId = 1
@@ -52,6 +53,8 @@ function App() {
 
   const [selectedSort, setSelectedSort] = useState('')
 
+  const [term, setTerm] = useState('')
+
   const createRecipe = input => {
     const { title, body } = input
     const newRecipe = createRecipeItem(title, body)
@@ -67,11 +70,25 @@ function App() {
     setRecipes([...recipes].sort((a, b) => a[sort].localeCompare(b[sort])))
   }
 
+  const searchRecipes = value => {
+    setTerm(value)
+  }
+
+  const search = (items, term) => {
+    if (term.length === 0) {
+      return items
+    }
+    return items.filter(
+      item => item.title.toLowerCase().indexOf(term.toLowerCase()) > -1
+    )
+  }
+
+  const visibleRecipes = search(recipes, term)
+
   return (
     <div className='App'>
+      <SearchPanel onSearchChange={searchRecipes} />
       <RecipeForm onCreated={createRecipe} />
-      <hr style={{ margin: '15px 0' }} />
-
       <MySelect
         value={selectedSort}
         onChange={sortRecipes}
@@ -85,7 +102,7 @@ function App() {
       {recipes.length ? (
         <RecipeList
           remove={removeRecipe}
-          recipes={recipes}
+          recipes={visibleRecipes}
           title='Рецепты супов'
         />
       ) : (

@@ -26,25 +26,21 @@
 /* ------ Recipe Body Styles ----- */
 
 .recipe-body {
-padding-top: 40px
+  padding-top: 40px;
 }
 
 .each-recipe {
   margin-top: 15px;
-padding: 20px;
-border: 2px solid teal;
-
-
+  padding: 20px;
+  border: 2px solid teal;
 }
-
 
 .ingredients-items {
   margin-top: 5px;
   margin-right: 70px;
   padding: 5px;
- display: flex;
- justify-content: space-between;
-
+  display: flex;
+  justify-content: space-between;
 }
 .recipe-header {
   padding: 15px;
