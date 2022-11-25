@@ -76,7 +76,7 @@ function App() {
 
   const search = (items, term) => {
     if (term.length === 0) {
-      return items
+      return items.filter((item) => !item)
     }
     return items.filter(
       item => item.title.toLowerCase().indexOf(term.toLowerCase()) > -1
@@ -103,7 +103,7 @@ function App() {
         <RecipeList
           remove={removeRecipe}
           recipes={visibleRecipes}
-          title='Рецепты супов'
+          
         />
       ) : (
         <h1 style={{ textAlign: 'center' }}>No soup recipes found!</h1>
