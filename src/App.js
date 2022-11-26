@@ -5,9 +5,10 @@ import MySelect from './components/UI/select/MySelect'
 import SearchPanel from './components/UI/search-panel/SearchPanel'
 import './styles/App.css'
 import RecipeList from './components/recipe-list/RecipeList'
+import { Recipes } from './components/recipe-data/InitialRecipeObjectList'
 
 let maxId = 1
-let maxId2 = 100
+
 const createRecipeItem = (title, body) => {
   return {
     id: maxId++,
@@ -22,34 +23,8 @@ const initialRecipeList = [
   createRecipeItem('Lentil soup', 'Spicy and rich soup for cold days'),
 ]
 
-const createRecipeObject = (title, about, ingredients, recipe) => {
-  return {
-    id: maxId2++,
-    title,
-    about,
-    ingredients,
-    recipe,
-  }
-}
-
-const initialRecipeObjectList = [
-  createRecipeObject(
-    'Pumpkin soup',
-    'Perfect easy recipe for cold autumn evening',
-    [
-      { name: 'pumpkin', quantity: '400g' },
-      { name: 'whole nutmeg', quantity: 'half' },
-      { name: 'single cream', quantity: '150ml' },
-      { name: 'salt, pepper, greek oregano', quantity: 'by taste' },
-    ],
-    'Saute sliced onion in butter. Add grated nutmeg. Add sliced pumkin, salt, pepper, oregano and water to cover pumpkin. Bring to boil. Simmer for 20min. Blend soup and add cream. Stir and serve.'
-  ),
-]
-
 function App() {
-  const [recipes, setRecipes] = useState(initialRecipeList)
-
-  const [recipeObject, setRecipeObject] = useState(initialRecipeObjectList)
+  const [recipes, setRecipes] = useState(Recipes)
 
   const [selectedSort, setSelectedSort] = useState('')
 
@@ -98,17 +73,16 @@ function App() {
           { value: 'body', name: 'By description' },
         ]}
       />
+      <RecipeBody recipes={visibleRecipes} />
 
       {recipes.length ? (
         <RecipeList
           remove={removeRecipe}
-          recipes={visibleRecipes}
+          recipes={recipes}
         />
       ) : (
         <h1 style={{ textAlign: 'center' }}>No soup recipes found!</h1>
       )}
-
-      <RecipeBody recipeObject={recipeObject} />
     </div>
   )
 }

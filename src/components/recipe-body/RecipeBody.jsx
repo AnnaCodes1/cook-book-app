@@ -3,8 +3,8 @@ import MyButton from '../UI/button/MyButton'
 import IngredientList from './IngredientList'
 import classes from './RecipeBody.module.css'
 
-const RecipeBody = ({ recipeObject }) => {
-  const eachRecipe = recipeObject.map(item => {
+const RecipeBody = ({ recipes }) => {
+  const eachRecipe = recipes.map(item => {
     const { id, title, about, recipe, ...ingredient } = item
     return (
       <div
