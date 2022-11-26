@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import RecipeBody from './components/recipe-body/RecipeBody'
 import RecipeForm from './components/RecipeForm'
-import RecipeList from './components/RecipeList'
 import MySelect from './components/UI/select/MySelect'
 import SearchPanel from './components/UI/search-panel/SearchPanel'
 import './styles/App.css'
+import RecipeList from './components/recipe-list/RecipeList'
 
 let maxId = 1
 let maxId2 = 100

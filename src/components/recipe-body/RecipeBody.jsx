@@ -1,21 +1,21 @@
 import React from 'react'
 import MyButton from '../UI/button/MyButton'
 import IngredientList from './IngredientList'
-import '/home/anna/Desktop/JS/cook-book/cook-book-app/src/styles/App.css'
+import classes from './RecipeBody.module.css'
 
 const RecipeBody = ({ recipeObject }) => {
   const eachRecipe = recipeObject.map(item => {
     const { id, title, about, recipe, ...ingredient } = item
     return (
       <div
-        className='each-recipe'
+        className={classes.eachRecipe}
         key={id}
       >
-        <h1 className='recipe-header'>{title}</h1>
-        <p className='about-recipe'>{about}</p>
+        <h1 className={classes.recipeHeader}>{title}</h1>
+        <p className={classes.aboutRecipe}>{about}</p>
         <IngredientList {...ingredient} />
-        <p className='recipeInstruction'>{recipe}</p>
-        <span className='recipeButtons'>
+        <p className={classes.recipeInstruction}>{recipe}</p>
+        <span className={classes.recipeButtons}>
           <MyButton>Add to favourite</MyButton>
           <MyButton>Edit recipe</MyButton>
           <MyButton>Delete recipe</MyButton>

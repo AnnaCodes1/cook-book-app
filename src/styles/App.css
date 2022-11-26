@@ -23,38 +23,3 @@
   align-items: center;
 }
 
-/* ------ Recipe Body Styles ----- */
-
-.recipe-body {
-  padding-top: 40px;
-}
-
-.each-recipe {
-  margin-top: 15px;
-  padding: 20px;
-  border: 2px solid teal;
-}
-
-.ingredients-items {
-  margin-top: 5px;
-  margin-right: 70px;
-  padding: 5px;
-  display: flex;
-  justify-content: space-between;
-}
-.recipe-header {
-  padding: 15px;
-  text-align: center;
-}
-.about-recipe {
-  font-weight: 700;
-  padding: 15px;
-  text-align: center;
-}
-
-.recipeButtons {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  margin-top: 50px
-}

@@ -1,0 +1,36 @@
+/* ------ Recipe Body Styles ----- */
+
+.recipeBody {
+  padding-top: 40px;
+}
+
+.eachRecipe {
+  margin-top: 15px;
+  padding: 20px;
+  border: 2px solid teal;
+}
+
+.ingredientsItems {
+  margin-top: 5px;
+  margin-right: 70px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.recipeHeader {
+  padding: 15px;
+  text-align: center;
+}
+.aboutRecipe {
+  font-weight: 700;
+  padding: 15px;
+  text-align: center;
+}
+
+.recipeButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+
