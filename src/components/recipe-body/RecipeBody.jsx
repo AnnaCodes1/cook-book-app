@@ -3,7 +3,7 @@ import MyButton from '../UI/button/MyButton'
 import IngredientList from './IngredientList'
 import classes from './RecipeBody.module.css'
 
-const RecipeBody = ({ recipes }) => {
+const RecipeBody = ({ recipes, remove }) => {
   const eachRecipe = recipes.map(item => {
     const { id, title, about, recipe, ...ingredient } = item
     return (
@@ -18,7 +18,7 @@ const RecipeBody = ({ recipes }) => {
         <span className={classes.recipeButtons}>
           <MyButton>Add to favourite</MyButton>
           <MyButton>Edit recipe</MyButton>
-          <MyButton>Delete recipe</MyButton>
+          <MyButton onClick={() => remove(eachRecipe)}>Delete recipe</MyButton>
         </span>
       </div>
     )

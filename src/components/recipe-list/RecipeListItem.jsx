@@ -1,20 +1,19 @@
 import React from 'react'
 import MyButton from '../UI/button/MyButton'
 
-
-const RecipeListItem = ({recipe, number, remove}) => {
-
+const RecipeListItem = ({ recipe, number, remove }) => {
   return (
-    <div className="recipe-item">
-        <div className="recipe_content">
-          <strong>{number}. {recipe.title}</strong>
-          <div>{recipe.body}</div>
-        </div>
-        <div className="recipe__btns">
-          <MyButton onClick={() =>
-    remove(recipe)}>Delete</MyButton>
-        </div>
+    <div className='recipe-item'>
+      <div className='recipe_content'>
+        <strong>
+          {number}. {recipe.title}
+        </strong>
+        <div>{recipe.body}</div>
       </div>
+      <div className='recipe__btns'>
+        <MyButton onClick={() => remove(recipe)}>Delete</MyButton>
+      </div>
+    </div>
   )
 }
 

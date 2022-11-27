@@ -50,4 +50,4 @@ const postniyPlov = createRecipeObject(
 
 const InitialRecipeObjectList = [pumpkinSoup, chickenSoup, postniyPlov]
 
-export { InitialRecipeObjectList as Recipes }
+export { InitialRecipeObjectList as recipeData }

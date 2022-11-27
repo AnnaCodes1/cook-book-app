@@ -5,7 +5,7 @@ import MySelect from './components/UI/select/MySelect'
 import SearchPanel from './components/UI/search-panel/SearchPanel'
 import './styles/App.css'
 import RecipeList from './components/recipe-list/RecipeList'
-import { Recipes } from './components/recipe-data/InitialRecipeObjectList'
+import { recipeData } from './components/recipe-data/InitialRecipeObjectList'
 
 let maxId = 1
 
@@ -24,7 +24,8 @@ const initialRecipeList = [
 ]
 
 function App() {
-  const [recipes, setRecipes] = useState(Recipes)
+  const [recipes, setRecipes] = useState(recipeData)
+  const [oldRecipes, setOldRecipes] = useState(initialRecipeList)
 
   const [selectedSort, setSelectedSort] = useState('')
 
@@ -33,11 +34,15 @@ function App() {
   const createRecipe = input => {
     const { title, body } = input
     const newRecipe = createRecipeItem(title, body)
-    setRecipes([...recipes, newRecipe])
+    setOldRecipes([...oldRecipes, newRecipe])
   }
 
   const removeRecipe = recipe => {
+    console.log('Remove recipe:', recipe)
     setRecipes(recipes.filter(r => r.id !== recipe.id))
+  }
+  const removeOldRecipe = recipe => {
+    setOldRecipes(oldRecipes.filter(r => r.id !== recipe.id))
   }
 
   const sortRecipes = sort => {
@@ -73,15 +78,18 @@ function App() {
           { value: 'body', name: 'By description' },
         ]}
       />
-      <RecipeBody recipes={visibleRecipes} />
+      <RecipeBody
+        recipes={visibleRecipes}
+        remove={removeRecipe}
+      />
 
       {recipes.length ? (
         <RecipeList
-          remove={removeRecipe}
-          recipes={recipes}
+          remove={removeOldRecipe}
+          recipes={oldRecipes}
         />
       ) : (
-        <h1 style={{ textAlign: 'center' }}>No soup recipes found!</h1>
+        <h1 style={{ textAlign: 'center' }}>No recipes found!</h1>
       )}
     </div>
   )
