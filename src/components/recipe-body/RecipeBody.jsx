@@ -3,27 +3,21 @@ import MyButton from '../UI/button/MyButton'
 import IngredientList from './IngredientList'
 import classes from './RecipeBody.module.css'
 
-const RecipeBody = ({ recipes, remove }) => {
-  const eachRecipe = recipes.map(item => {
-    const { id, title, about, recipe, ...ingredient } = item
-    return (
-      <div
-        className={classes.eachRecipe}
-        key={id}
-      >
-        <h1 className={classes.recipeHeader}>{title}</h1>
-        <p className={classes.aboutRecipe}>{about}</p>
-        <IngredientList {...ingredient} />
-        <p className={classes.recipeInstruction}>{recipe}</p>
-        <span className={classes.recipeButtons}>
-          <MyButton>Add to favourite</MyButton>
-          <MyButton>Edit recipe</MyButton>
-          <MyButton onClick={() => remove(eachRecipe)}>Delete recipe</MyButton>
-        </span>
-      </div>
-    )
-  })
-  return <div className='recipe-body'>{eachRecipe}</div>
+const RecipeBody = ({ recipe, remove }) => {
+  const { title, about, instructions, ...ingredients } = recipe
+  return (
+    <div className={classes.eachRecipe}>
+      <h1 className={classes.recipeHeader}>{title}</h1>
+      <p className={classes.aboutRecipe}>{about}</p>
+      <IngredientList {...ingredients} />
+      <p className={classes.recipeInstruction}>{instructions}</p>
+      <span className={classes.recipeButtons}>
+        <MyButton>Add to favourites</MyButton>
+        <MyButton>Edit recipe</MyButton>
+        <MyButton onClick={() => remove(recipe)}>Delete recipe</MyButton>
+      </span>
+    </div>
+  )
 }
 
 export default RecipeBody

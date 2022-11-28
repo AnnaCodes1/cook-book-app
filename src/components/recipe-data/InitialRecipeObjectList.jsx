@@ -1,11 +1,11 @@
 let maxId2 = 100
-const createRecipeObject = (title, about, ingredients, recipe) => {
+const createRecipeObject = (title, about, ingredients, instructions) => {
   return {
     id: maxId2++,
     title,
     about,
     ingredients,
-    recipe,
+    instructions,
   }
 }
 const pumpkinSoup = createRecipeObject(

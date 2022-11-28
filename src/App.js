@@ -6,6 +6,7 @@ import SearchPanel from './components/UI/search-panel/SearchPanel'
 import './styles/App.css'
 import RecipeList from './components/recipe-list/RecipeList'
 import { recipeData } from './components/recipe-data/InitialRecipeObjectList'
+import RecipeBodyList from './components/recipe-body/RecipeBodyList'
 
 let maxId = 1
 
@@ -38,7 +39,6 @@ function App() {
   }
 
   const removeRecipe = recipe => {
-    console.log('Remove recipe:', recipe)
     setRecipes(recipes.filter(r => r.id !== recipe.id))
   }
   const removeOldRecipe = recipe => {
@@ -78,19 +78,20 @@ function App() {
           { value: 'body', name: 'By description' },
         ]}
       />
-      <RecipeBody
-        recipes={visibleRecipes}
-        remove={removeRecipe}
-      />
 
       {recipes.length ? (
-        <RecipeList
-          remove={removeOldRecipe}
-          recipes={oldRecipes}
+        <RecipeBodyList
+          recipes={visibleRecipes}
+          remove={removeRecipe}
         />
       ) : (
         <h1 style={{ textAlign: 'center' }}>No recipes found!</h1>
       )}
+
+      <RecipeList
+        remove={removeOldRecipe}
+        recipes={oldRecipes}
+      />
     </div>
   )
 }
