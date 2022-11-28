@@ -3,12 +3,12 @@ import MyButton from './UI/button/MyButton'
 import MyInput from './UI/input/MyInput'
 
 const RecipeForm = ({ onCreated }) => {
-  const [recipe, setRecipe] = useState({ title: '', body: '' })
+  const [recipe, setRecipe] = useState({ title: '', about: '', instructions: '' })
 
   const onSubmit = e => {
     e.preventDefault()
     onCreated(recipe)
-    setRecipe({ title: '', body: '' })
+    // setRecipe({ title: '', body: '' })
   }
 
   return (
@@ -22,10 +22,17 @@ const RecipeForm = ({ onCreated }) => {
       />
 
       <MyInput
-        value={recipe.body}
-        onChange={e => setRecipe({ ...recipe, body: e.target.value })}
+        value={recipe.about}
+        onChange={e => setRecipe({ ...recipe, about: e.target.value })}
         type='text'
         placeholder='Description'
+      />
+
+      <MyInput
+        value={recipe.instructions}
+        onChange={e => setRecipe({ ...recipe, instructions: e.target.value })}
+        type='text'
+        placeholder='Cooking instructions'
       />
 
       <MyButton type='submit'>Add recipe</MyButton>

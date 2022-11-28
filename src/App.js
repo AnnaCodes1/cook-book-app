@@ -10,18 +10,19 @@ import RecipeBodyList from './components/recipe-body/RecipeBodyList'
 
 let maxId = 1
 
-const createRecipeItem = (title, body) => {
+const createRecipeItem = (title, about, instructions) => {
   return {
     id: maxId++,
     title,
-    body,
+    about,
+    instructions
   }
 }
 
 const initialRecipeList = [
-  createRecipeItem('Chicken soup', 'Hearty soup for cold days'),
-  createRecipeItem('Pumpkin soup', 'Creamy soup for autumn days'),
-  createRecipeItem('Lentil soup', 'Spicy and rich soup for cold days'),
+  createRecipeItem('Chicken soup', 'Hearty soup for cold days', 'Cook Properly'),
+  createRecipeItem('Pumpkin soup', 'Creamy soup for autumn days', 'Cook properly'),
+  createRecipeItem('Lentil soup', 'Spicy and rich soup for cold days', 'Cook properly'),
 ]
 
 function App() {
@@ -33,8 +34,8 @@ function App() {
   const [term, setTerm] = useState('')
 
   const createRecipe = input => {
-    const { title, body } = input
-    const newRecipe = createRecipeItem(title, body)
+    const { title, about, instructions} = input
+    const newRecipe = createRecipeItem(title, about, instructions)
     setOldRecipes([...oldRecipes, newRecipe])
   }
 

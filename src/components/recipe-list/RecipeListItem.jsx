@@ -8,7 +8,8 @@ const RecipeListItem = ({ recipe, number, remove }) => {
         <strong>
           {number}. {recipe.title}
         </strong>
-        <div>{recipe.body}</div>
+        <div>{recipe.about}</div>
+        <div>{recipe.instructions}</div>
       </div>
       <div className='recipe__btns'>
         <MyButton onClick={() => remove(recipe)}>Delete</MyButton>
