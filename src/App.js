@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import RecipeBody from './components/recipe-body/RecipeBody'
 import RecipeForm from './components/RecipeForm'
 import MySelect from './components/UI/select/MySelect'
 import SearchPanel from './components/UI/search-panel/SearchPanel'
 import './styles/App.css'
 import RecipeList from './components/recipe-list/RecipeList'
-import { recipeData } from './components/recipe-data/InitialRecipeObjectList'
+import { recipeData, createRecipeObject } from './components/recipe-data/InitialRecipeObjectList'
 import RecipeBodyList from './components/recipe-body/RecipeBodyList'
 
 let maxId = 1
@@ -34,9 +33,9 @@ function App() {
   const [term, setTerm] = useState('')
 
   const createRecipe = input => {
-    const { title, about, instructions} = input
-    const newRecipe = createRecipeItem(title, about, instructions)
-    setOldRecipes([...oldRecipes, newRecipe])
+    const { title, about, instructions, ...ingredients} = input
+    const newRecipe = createRecipeObject(title, about, ingredients, instructions)
+    setRecipes([...recipes, newRecipe])
   }
 
   const removeRecipe = recipe => {
